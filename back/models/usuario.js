@@ -1,9 +1,9 @@
 'use strict';
 
 const { Model } = require('sequelize');
-//const { ModeloBase } = require('sequelize');
+//const ModeloBase = require('./modeloBase');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes, Deferrable) => {
 //  class Usuario extends ModeloBase {
   class Usuario extends Model {
       /**
@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+
+      static associate(models) {
       // define association here
     }
   }
@@ -28,12 +29,11 @@ module.exports = (sequelize, DataTypes) => {
 
     email:  DataTypes.STRING,
 
-    //id_rol:  DataTypes.INTEGER,
-
     id_rol: {
       type: DataTypes.INTEGER,
   
       references: {
+        // Se toma de la ayuda de Sequelize
         // This is a reference to another model
         model: Roles,
   
@@ -53,9 +53,9 @@ module.exports = (sequelize, DataTypes) => {
 
     activo: DataTypes.INTEGER,
 
-    fecha_creacion: DataTypes.NOW,
+    fecha_creacion: DataTypes.DATE,
 
-    fecha_modificacion: DataTypes.NOW,
+    fecha_modificacion: DataTypes.DATE,
    }, {
     sequelize,
     modelName: 'Usuario',
