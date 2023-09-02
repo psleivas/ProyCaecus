@@ -4,59 +4,60 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('usuarios', {
+    await queryInterface.createTable("usuarios", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
- 
+
       nombre: {
         allowNull: false,
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(50),
       },
- 
+
       contrasenia: {
         allowNull: false,
-        type: Sequelize.STRING(30)
+        type: Sequelize.STRING(30),
       },
- 
+
       email: {
         allowNull: false,
-        type: Sequelize.STRING(150)
+        type: Sequelize.STRING(150),
       },
- 
+
       id_rol: {
-         allowNull: false,
-         type: Sequelize.INTEGER,
-         references: {
-          model: 'roles', key: 'id'
-        } 
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "roles",
+          key: "id",
+        },
       },
- 
+
       descripcion_rol: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(50),
       },
- 
+
       activo: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        defaultValue: 0 
+        defaultValue: 0,
       },
- 
+
       fecha_creacion: {
         type: Sequelize.DATEONLY,
         allowNull: true,
-        defaultValue: Sequelize.DATEONLY
+        defaultValue: Sequelize.DATEONLY,
       },
- 
+
       fecha_modificacion: {
         type: Sequelize.DATEONLY,
         allowNull: true,
         defaultValue: Sequelize.DATEONLY,
-        onUpdate: Sequelize.DATEONLY
-      }
+        onUpdate: Sequelize.DATEONLY,
+      },
     });
   },
 
