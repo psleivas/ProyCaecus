@@ -40,10 +40,10 @@
 //       }
 //     ];
 
-//     return queryInterface.bulkInsert('ldispositivos_electronicos', datosdDispositivosElectronicos, {});
+//     return queryInterface.bulkInsert('dispositivos_electronicos', datosdDispositivosElectronicos, {});
 //   },
 
 //   down: async (queryInterface, Sequelize) => {
-//     return queryInterface.bulkDelete('localidades', null, {});
+//     return queryInterface.bulkDelete('dispositivos_electronicos', null, {});
 //   }
 // };

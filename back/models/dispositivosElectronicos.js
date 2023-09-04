@@ -3,7 +3,7 @@
 const { Model } = require('sequelize');
 //const ModeloBase = require('./modeloBase');
 const DescripcionesDispositivos = require('./descripcionesDispositivos');
-const DescripcionesDispositivos = require('./descripcionesDispositivos');
+const DescripcionesDispositivos = require('./estadosDispositivos');
 
 module.exports = (sequelize, DataTypes, Deferrable) => {
 //  class Usuario extends ModeloBase {
@@ -15,8 +15,11 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
      */
 
       static associate(models) {
-      // define association here
-    }
+        // define association here
+        DispositivosElectroniscos.belongsTo(models.DescripconesDispositivos, { foreignKey: "id_descripcion_dispositivo" });
+
+        DispositivosElectroniscos.belongsTo(models.EstadosDispositivos, { foreignKey: "id_estado_dispositivo" });
+      }
   }
   
   // Inicializar la clase base
@@ -59,7 +62,7 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
       references: {
         // Se toma de la ayuda de Sequelize
         // This is a reference to another model
-        model: estadosDispositivos,
+        model: EstadosDispositivos,
   
         // This is the column name of the referenced model
         key: 'id',
