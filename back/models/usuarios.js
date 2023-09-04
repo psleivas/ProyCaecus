@@ -2,6 +2,7 @@
 
 const { Model } = require('sequelize');
 //const ModeloBase = require('./modeloBase');
+const ModeloBase = require('./roles');
 
 module.exports = (sequelize, DataTypes, Deferrable) => {
 //  class Usuario extends ModeloBase {
@@ -13,8 +14,9 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
      */
 
       static associate(models) {
-      // define association here
-    }
+        // define association here
+        Usuario.belongsTo(models.Rol, { foreignKey: "id_rol" });
+      }
   }
   
   // Inicializar la clase base
