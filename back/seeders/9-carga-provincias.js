@@ -339,7 +339,7 @@ module.exports = {
         fecha_creacion: new Date(),
         modificado_por: "Sistema",
         fecha_modificacion: new Date(),
-      },
+      }
     ];
 
     return queryInterface.bulkInsert('provincias', datosdProvincias, {});
