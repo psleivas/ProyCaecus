@@ -7,7 +7,7 @@ const DescripcionesDispositivos = require('./estadosDispositivos');
 
 module.exports = (sequelize, DataTypes, Deferrable) => {
 //  class Usuario extends ModeloBase {
-  class DispositivosElectroniscos extends Model {
+  class DispositivoElectronisco extends Model {
       /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -16,16 +16,16 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
 
       static associate(models) {
         // define association here
-        DispositivosElectroniscos.belongsTo(models.DescripconesDispositivos, { foreignKey: "id_descripcion_dispositivo" });
+        DispositivoElectronisco.belongsTo(models.DescripconDispositivo, { foreignKey: "id_descripcion_dispositivo" });
 
-        DispositivosElectroniscos.belongsTo(models.EstadosDispositivos, { foreignKey: "id_estado_dispositivo" });
+        DispositivoElectronisco.belongsTo(models.EstadoDispositivo, { foreignKey: "id_estado_dispositivo" });
       }
   }
   
   // Inicializar la clase base
   //super.initModeloBase(sequelize);
 
-  DispositivosElectroniscos.init({
+  DispositivoElectronisco.init({
     id:  DataTypes.INTEGER,
 
     descripcion: DataTypes.STRING,
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
       references: {
         // Se toma de la ayuda de Sequelize
         // This is a reference to another model
-        model: DescripcionesDispositivos,
+        model: DescripcionDispositivo,
   
         // This is the column name of the referenced model
         key: 'id',
@@ -62,7 +62,7 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
       references: {
         // Se toma de la ayuda de Sequelize
         // This is a reference to another model
-        model: EstadosDispositivos,
+        model: EstadoDispositivo,
   
         // This is the column name of the referenced model
         key: 'id',
@@ -89,8 +89,8 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
     fecha_modificacion: DataTypes.DATE,
    }, {
     sequelize,
-    modelName: 'DispositivosElectroniscos',
+    modelName: 'DispositivoElectronisco',
   });
 
-  return DispositivosElectroniscos;
+  return DispositivoElectronisco;
 };

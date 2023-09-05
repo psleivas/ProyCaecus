@@ -5,7 +5,7 @@ const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   //class Roles extends ModeloBase {
-  class Provincias extends Model {
+  class EstadoDispositivo extends Model {
       /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -20,22 +20,16 @@ module.exports = (sequelize, DataTypes) => {
   // Inicializar la clase base (ModeloBase)
   //super.initModeloBase(sequelize);
 
-  Provincias.init({
+  EstadoDispositivo.init({
     id:  DataTypes.INTEGER,
 
-    // codigo_afip: DataTypes.INTEGER,
-
-    // abreviatura: DataTypes.STRING,
-
-    nombre: DataTypes.STRING,
-
-    // prefijo_telefonico: DataTypes.INTEGER,
+    estado_dispositivo: DataTypes.STRING,
 
     activo: DataTypes.INTEGER,
 
     por_defecto: DataTypes.INTEGER,
 
-    // orden: DataTypes.INTEGER,
+    orden: DataTypes.INTEGER,
 
     creado_por:  DataTypes.STRING,
 
@@ -46,8 +40,8 @@ module.exports = (sequelize, DataTypes) => {
     fecha_modificacion: DataTypes.DATE,
   }, {
     sequelize,
-    modelName: 'Provincias',
+    modelName: 'EstadoDispositivo',
   });
 
-  return Provincias;
+  return EstadoDispositivo;
 };
